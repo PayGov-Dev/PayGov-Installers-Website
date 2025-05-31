@@ -16,6 +16,7 @@ The website provides links to download different versions of the PayGov POS Inst
 
 | Version | File | Release Notes |
 | ------- | ---- | ------------- |
+| v1.0.3  | [PayGovPosInstall-1.0.3.msi](installers-Prod/PayGovPosInstall-1.0.3.msi) | First and Last Name not required |
 | v1.0.2  | [PayGovPosInstall-1.0.2.msi](installers-Prod/PayGovPosInstall-1.0.2.msi) | Update terminal timeout to 2 minutes |
 | v1.0.1.1  | [PayGovPosInstall-1.0.1.1.msi](installers-Prod/PayGovPosInstall-1.0.1.1.msi) | Update terminal timeout to 2 minutes |
 | v1.0.1    | [PayGovPosInstall-1.0.1.msi](installers-Prod/PayGovPosInstall-1.0.1.msi)   | Added feature to copy order id |
