@@ -4,86 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PayGov POS Installer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px 24px 32px 24px;
+        }
+        h1 {
+            text-align: center;
+            color: #1a237e;
+            margin-bottom: 16px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        h2 {
+            color: #3949ab;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
         table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 20px 0;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0 32px 0;
+            background: #fafbfc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(60,60,60,0.04);
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 14px 12px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background: #e8eaf6;
+            color: #283593;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover {
+            background: #f1f5fb;
+            transition: background 0.2s;
+        }
+        a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            margin: 0 0 0 18px;
+            padding-left: 1.2em;
+            list-style: none;
+        }
+        ul li {
+            position: relative;
+            margin-bottom: 7px;
+            padding-left: 1.2em;
+            font-size: 1.01em;
+        }
+        ul li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 0.55em;
+            height: 0.55em;
+            background: #3949ab;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 1px 2px rgba(60,60,60,0.10);
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 10px 2vw;
+            }
+            table, th, td {
+                font-size: 0.98rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>PayGov POS Installer</h1>
-    <h2>Prod Versions</h2>
-    <table>
-        <tr>
-            <th>Version</th>
-            <th>File</th>
-            <th>Release Notes</th>
-        </tr>
-        <tr>
-            <td>v1.0.3</td>
-            <td><a href="installers-Prod/PayGovPosInstall-1.0.3.msi">PayGovPosInstall-1.0.3.msi</a></td>
-            <td>Make First and Last name not required</td>
-        </tr>
-        <tr>
-            <td>v1.0.2</td>
-            <td><a href="installers-Prod/PayGovPosInstall-1.0.2.msi">PayGovPosInstall-1.0.2.msi</a></td>
-            <td>Updated the MerchantE SDK dll. It increases the timeout to 2 minutes when talking to the terminal</td>
-        </tr>
-        <tr>
-            <td>v1.0.1.1</td>
-            <td><a href="installers-Prod/PayGovPosInstall-1.0.1.1.msi">PayGovPosInstall-1.0.1.1.msi</a></td>
-            <td>Update terminal timeout to 2 minutes</td>
-        </tr>
-        <tr>
-            <td>v1.0.1</td>
-            <td><a href="installers-Prod/PayGovPosInstall-1.0.1.msi">PayGovPosInstall-1.0.1.msi</a></td>
-            <td>Added feature to copy order id</td>
-        </tr>
-        <tr>
-            <td>v1.0.0</td>
-            <td><a href="installers-Prod/PayGovPosInstall-1.0.0.msi">PayGovPosInstall-1.0.0.msi</a></td>
-            <td>First Verion on install</td>
-        </tr>
-    </table>
+    <div class="container">
+        <h1>PayGov POS Installer</h1>
+        <h2>Prod Versions</h2>
+        <table>
+            <tr>
+                <th>Version</th>
+                <th>File</th>
+                <th>Release Notes</th>
+            </tr>
+            <tr>
+                <td>v1.0.4</td>
+                <td><a href="installers-Prod/PayGovPosInstall-1.0.4.msi">PayGovPosInstall-1.0.4.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Implemented retry logic for API calls to improve reliability</li>
+                        <li>Added automatic relogin to EMV device during payment processing</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.3</td>
+                <td><a href="installers-Prod/PayGovPosInstall-1.0.3.msi">PayGovPosInstall-1.0.3.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Make First and Last name not required</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.2</td>
+                <td><a href="installers-Prod/PayGovPosInstall-1.0.2.msi">PayGovPosInstall-1.0.2.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Updated the MerchantE SDK dll. It increases the timeout to 2 minutes when talking to the terminal</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.1.1</td>
+                <td><a href="installers-Prod/PayGovPosInstall-1.0.1.1.msi">PayGovPosInstall-1.0.1.1.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Update terminal timeout to 2 minutes</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.1</td>
+                <td><a href="installers-Prod/PayGovPosInstall-1.0.1.msi">PayGovPosInstall-1.0.1.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Added feature to copy order id</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.0</td>
+                <td><a href="installers-Prod/PayGovPosInstall-1.0.0.msi">PayGovPosInstall-1.0.0.msi</a></td>
+                <td>
+                    <ul>
+                        <li>First Version on install</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
 
-    <hr>
-    <h2>Test Versions</h2>
-    <table>
-        <tr>
-            <th>Version</th>
-            <th>File</th>
-            <th>Release Notes</th>
-        </tr>
-        <tr>
-            <td>v1.0.3</td>
-            <td><a href="installers-Debug/PayGovPosInstall-1.0.3-Test.msi">PayGovPosInstall-1.0.3-Test.msi</a></td>
-            <td>Make First and Last name not required</td>
-        </tr>
-        <tr>
-            <td>v1.0.2</td>
-            <td><a href="installers-Debug/PayGovPosInstall-1.0.2-Test.msi">PayGovPosInstall-1.0.2-Test.msi</a></td>
-            <td>Updated the MerchantE SDK dll. It increases the timeout to 2 minutes when talking to the terminal</td>
-        </tr>
-        <tr>
-            <td>v1.0.1.1</td>
-            <td><a href="installers-Debug/PayGovPosInstall-1.0.1.1-Test.msi">PayGovPosInstall-1.0.1.1-Test.msi</a></td>
-            <td>Update terminal timeout to 2 minutes</td>
-        </tr>
-        <tr>
-            <td>v1.0.1</td>
-            <td><a href="installers-Prod/PayGovPosInstall-1.0.1-Test.msi">PayGovPosInstall-1.0.1-Test.msi</a></td>
-            <td>Added feature to copy order id</td>
-        </tr>
-    </table>
+        <h2>Test Versions</h2>
+        <table>
+            <tr>
+                <th>Version</th>
+                <th>File</th>
+                <th>Release Notes</th>
+            </tr>
+            <tr>
+                <td>v1.0.4</td>
+                <td><a href="installers-Debug/PayGovPosInstall-1.0.4-Test.msi">PayGovPosInstall-1.0.4-Test.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Implemented retry logic for API calls to improve reliability</li>
+                        <li>Added automatic relogin to EMV device during payment processing</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.3</td>
+                <td><a href="installers-Debug/PayGovPosInstall-1.0.3-Test.msi">PayGovPosInstall-1.0.3-Test.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Make First and Last name not required</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.2</td>
+                <td><a href="installers-Debug/PayGovPosInstall-1.0.2-Test.msi">PayGovPosInstall-1.0.2-Test.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Updated the MerchantE SDK dll. It increases the timeout to 2 minutes when talking to the terminal</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.1.1</td>
+                <td><a href="installers-Debug/PayGovPosInstall-1.0.1.1-Test.msi">PayGovPosInstall-1.0.1.1-Test.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Update terminal timeout to 2 minutes</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>v1.0.1</td>
+                <td><a href="installers-Prod/PayGovPosInstall-1.0.1-Test.msi">PayGovPosInstall-1.0.1-Test.msi</a></td>
+                <td>
+                    <ul>
+                        <li>Added feature to copy order id</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
