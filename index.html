@@ -4,315 +4,380 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PayGov POS Installer</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
+        :root {
+            --paygov-primary: #1a237e;
+            --paygov-secondary: #3949ab;
+            --paygov-accent: #1976d2;
+        }
+        
         body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background: #f6f8fa;
-            margin: 0;
-            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
         }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            padding: 32px 24px 32px 24px;
-        }
-        h1 {
-            text-align: center;
-            color: #1a237e;
-            margin-bottom: 16px;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        h2 {
-            color: #3949ab;
-            margin-top: 32px;
-            margin-bottom: 12px;
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 20px 0 32px 0;
-            background: #fafbfc;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(60,60,60,0.04);
-        }
-        th, td {
-            border-bottom: 1px solid #e0e0e0;
-            padding: 14px 12px;
-            text-align: left;
-        }
-        th {
-            background: #e8eaf6;
-            color: #283593;
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        tr:hover {
-            background: #f1f5fb;
-            transition: background 0.2s;
-        }
-        a {
-            color: #1976d2;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        ul {
-            margin: 0 0 0 18px;
-            padding-left: 1.2em;
-            list-style: none;
-        }
-        ul li {
+        
+        .header-banner {
+            background-image: url('images/bg-header-flag.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            margin-bottom: 7px;
-            padding-left: 1.2em;
-            font-size: 1.01em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        ul li:before {
+        
+        .header-banner::before {
             content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            top: 0.6em;
-            width: 0.55em;
-            height: 0.55em;
-            background: #3949ab;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 1px 2px rgba(60,60,60,0.10);
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.85) 0%, rgba(57, 73, 171, 0.75) 100%);
         }
-        @media (max-width: 700px) {
-            .container {
-                padding: 10px 2vw;
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        
+        .logo {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: brightness(1.1);
+        }
+        
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header-subtitle {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        
+        .navbar-brand {
+            font-weight: 600;
+            color: var(--paygov-primary) !important;
+        }
+        
+        .nav-link {
+            color: var(--paygov-secondary) !important;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover {
+            color: var(--paygov-accent) !important;
+        }
+        
+        .latest-release {
+            background: linear-gradient(135deg, var(--paygov-primary) 0%, var(--paygov-secondary) 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.2);
+        }
+        
+        .latest-release .release-notes {
+            color: white;
+        }
+        
+        .latest-release .release-notes ul {
+            color: white;
+        }
+        
+        .latest-release .release-notes li {
+            color: white;
+        }
+        
+        .latest-release h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .version-badge {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .download-btn {
+            background-color: white;
+            color: var(--paygov-primary);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            color: var(--paygov-secondary);
+        }
+        
+        .download-btn i {
+            margin-right: 8px;
+        }
+        
+        .version-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--paygov-accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .version-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transform: translateX(4px);
+        }
+        
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .version-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--paygov-primary);
+        }
+        
+        .version-download {
+            color: var(--paygov-accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .version-download:hover {
+            color: var(--paygov-secondary);
+            text-decoration: underline;
+        }
+        
+        .release-notes {
+            color: #555;
+        }
+        
+        .release-notes ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .release-notes li {
+            margin-bottom: 6px;
+        }
+        
+        .section-title {
+            color: var(--paygov-primary);
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--paygov-accent);
+        }
+        
+        footer {
+            background-color: var(--paygov-primary);
+            color: white;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        footer a {
+            color: #90caf9;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 1.8rem;
             }
-            table, th, td {
-                font-size: 0.98rem;
+            
+            .logo {
+                max-width: 140px;
             }
-            h1 {
-                font-size: 2rem;
+            
+            .version-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .version-download {
+                margin-top: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>PayGov POS Installer</h1>
-        <h2>Prod Versions</h2>
-        <table>
-            <tr>
-                <th>Version</th>
-                <th>File</th>
-                <th>Release Notes</th>
-            </tr>
-            <tr>
-                <td>v1.0.8</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.8.msi">PayGovPosInstall-1.0.8.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Add Version Checking</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.7</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.7.msi">PayGovPosInstall-1.0.7.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Updated to latest SDK.  The app on the device must be version 1.11.11.18, version 1.11.12 will not work.</li>
-                        <li>Now if the transaction fails, it will automatically retry.  Then if it still fails and the customers is still processing the payment, it will prompt them to try again.</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.6</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.6.msi">PayGovPosInstall-1.0.6.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Make sure all communication to terminal logs in first, incase the terminal was unplugged between transactions</li>
-                        <li>Made bug fixes recommended by AI</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.5</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.5.msi">PayGovPosInstall-1.0.5.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Create temporary orders if terminal was a success but payment couldn't be added to PayGov</li>
-                        <li>User can try to enter order on failed payments</li>
-                        <li>Ability to upload log file</li>
-                        <li>Add signature to confirmation print page</li>
-                        <li>Moved notification that the app is connected to terminal from a popup to the title window, it will only show up for 10 seconds after openning</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.4</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.4.msi">PayGovPosInstall-1.0.4.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Implemented retry logic for API calls to improve reliability</li>
-                        <li>Added automatic relogin to EMV device during payment processing</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.3</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.3.msi">PayGovPosInstall-1.0.3.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Make First and Last name not required</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.2</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.2.msi">PayGovPosInstall-1.0.2.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Updated the MerchantE SDK dll. It increases the timeout to 2 minutes when talking to the terminal</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.1.1</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.1.1.msi">PayGovPosInstall-1.0.1.1.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Update terminal timeout to 2 minutes</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.1</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.1.msi">PayGovPosInstall-1.0.1.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Added feature to copy order id</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.0</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.0.msi">PayGovPosInstall-1.0.0.msi</a></td>
-                <td>
-                    <ul>
-                        <li>First Version on install</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-download"></i> PayGov POS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="developers.html">Developer Builds</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <h2>Test Versions</h2>
-        <table>
-            <tr>
-                <th>Version</th>
-                <th>File</th>
-                <th>Release Notes</th>
-            </tr>
-            <tr>
-                <td>v1.0.8</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.8-Test.msi">PayGovPosInstall-1.0.8-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Add Version Checking</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.7</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.7-Test.msi">PayGovPosInstall-1.0.7-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Updated to latest SDK.  The app on the device must be version 1.11.11.18, version 1.11.12 will not work.</li>
-                        <li>Now if the transaction fails, it will automatically retry.  Then if it still fails and the customers is still processing the payment, it will prompt them to try again.</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.6</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.6-Test.msi">PayGovPosInstall-1.0.6-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Create temporary orders if terminal was a success but payment couldn't be added to PayGov</li>
-                        <li>User can try to enter order on failed payments</li>
-                        <li>Ability to upload log file</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.5</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.5-Test.msi">PayGovPosInstall-1.0.5-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Create temporary orders if terminal was a success but payment couldn't be added to PayGov</li>
-                        <li>User can try to enter order on failed payments</li>
-                        <li>Ability to upload log file</li>
-                        <li>Add signature to confirmation print page</li>
-                        <li>Moved notification that the app is connected to terminal from a popup to the title window, it will only show up for 10 seconds after openning</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.4</td>
-                <td><a href="installers-Debug/PayGovPosInstall-1.0.4-Test.msi">PayGovPosInstall-1.0.4-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Implemented retry logic for API calls to improve reliability</li>
-                        <li>Added automatic relogin to EMV device during payment processing</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.3</td>
-                <td><a href="installers-Debug/PayGovPosInstall-1.0.3-Test.msi">PayGovPosInstall-1.0.3-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Make First and Last name not required</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.2</td>
-                <td><a href="installers-Debug/PayGovPosInstall-1.0.2-Test.msi">PayGovPosInstall-1.0.2-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Updated the MerchantE SDK dll. It increases the timeout to 2 minutes when talking to the terminal</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.1.1</td>
-                <td><a href="installers-Debug/PayGovPosInstall-1.0.1.1-Test.msi">PayGovPosInstall-1.0.1.1-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Update terminal timeout to 2 minutes</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>v1.0.1</td>
-                <td><a href="installers-Prod/PayGovPosInstall-1.0.1-Test.msi">PayGovPosInstall-1.0.1-Test.msi</a></td>
-                <td>
-                    <ul>
-                        <li>Added feature to copy order id</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <div class="header-content">
+            <img src="images/logo.png" alt="PayGov Logo" class="logo">
+            <h1 class="header-title">PayGov POS Installer</h1>
+            <p class="header-subtitle">Download the latest version of PayGov Point of Sale software</p>
+        </div>
     </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Latest Release -->
+        <div class="latest-release">
+            <h2><i class="bi bi-star-fill"></i> Latest Release</h2>
+            <div class="version-badge">Version 1.0.8</div>
+            <div class="release-notes mb-4">
+                <ul>
+                    <li>Added automatic version checking feature - the app now checks if you're using the latest version</li>
+                    <li>Users running outdated versions will receive an in-app notification with a direct link to this download page</li>
+                    <li>Ensures customers always have access to the newest features and improvements</li>
+                </ul>
+            </div>
+            <a href="installers-Prod/PayGovPosInstall-1.0.8.msi" class="download-btn">
+                <i class="bi bi-download"></i> Download Latest Version
+            </a>
+        </div>
+
+        <!-- Previous Versions -->
+        <h2 class="section-title">Previous Versions</h2>
+        
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-number">Version 1.0.7</span>
+                <a href="installers-Prod/PayGovPosInstall-1.0.7.msi" class="version-download">
+                    <i class="bi bi-download"></i> Download
+                </a>
+            </div>
+            <div class="release-notes">
+                <ul>
+                    <li>Updated to latest SDK. The app on the device must be version 1.11.11.18, version 1.11.12 will not work.</li>
+                    <li>Now if the transaction fails, it will automatically retry. Then if it still fails and the customers is still processing the payment, it will prompt them to try again.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-number">Version 1.0.6</span>
+                <a href="installers-Prod/PayGovPosInstall-1.0.6.msi" class="version-download">
+                    <i class="bi bi-download"></i> Download
+                </a>
+            </div>
+            <div class="release-notes">
+                <ul>
+                    <li>Make sure all communication to terminal logs in first, incase the terminal was unplugged between transactions</li>
+                    <li>Made bug fixes recommended by AI</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-number">Version 1.0.5</span>
+                <a href="installers-Prod/PayGovPosInstall-1.0.5.msi" class="version-download">
+                    <i class="bi bi-download"></i> Download
+                </a>
+            </div>
+            <div class="release-notes">
+                <ul>
+                    <li>Create temporary orders if terminal was a success but payment couldn't be added to PayGov</li>
+                    <li>User can try to enter order on failed payments</li>
+                    <li>Ability to upload log file</li>
+                    <li>Add signature to confirmation print page</li>
+                    <li>Moved notification that the app is connected to terminal from a popup to the title window, it will only show up for 10 seconds after openning</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-number">Version 1.0.4</span>
+                <a href="installers-Prod/PayGovPosInstall-1.0.4.msi" class="version-download">
+                    <i class="bi bi-download"></i> Download
+                </a>
+            </div>
+            <div class="release-notes">
+                <ul>
+                    <li>Implemented retry logic for API calls to improve reliability</li>
+                    <li>Added automatic relogin to EMV device during payment processing</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p class="mb-2">&copy; 2025 PayGov. All rights reserved.</p>
+            <p class="mb-0">
+                <a href="developers.html">Developer Builds</a> | 
+                <a href="https://github.com/PayGov-Dev/PayGov-Installers-Website" target="_blank">GitHub Repository</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
