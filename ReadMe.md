@@ -1,52 +1,33 @@
-# PayGov POS Installer
+# PayGov POS Installer Website
 
-This repository contains the PayGov POS Installer files and a modern, responsive website to download different versions of the installer.
+This repository hosts the official download website for PayGov Point of Sale (POS) software installers.
 
-## Repository Structure
+## 🌐 Live Site
 
-- **CNAME**: Contains the custom domain for the GitHub Pages site.
-- **index.html**: The main webpage for downloading the installers with modern styling.
-- **installers-Prod/**: Directory containing production installer files.
-- **Installers-Debug/**: Directory containing test/debug installer files.
+Visit the download site at: **[posinstaller.paygov.us](https://posinstaller.paygov.us)**
 
-## Website
+## 📋 About
 
-The website provides a clean, modern interface with links to download different versions of the PayGov POS Installer. It features:
+This is a GitHub Pages site that provides a professional interface for downloading PayGov POS application installers. The site offers:
 
-- **Responsive Design**: Works well on desktop and mobile devices
-- **Modern Styling**: Clean, card-based layout with Google Fonts
-- **Organized Tables**: Separate sections for Production and Test versions
-- **Consistent Formatting**: All release notes presented in bulleted lists
+- **Production Releases**: Stable versions ready for customer deployment
+- **Developer Builds**: Test versions for local development and pre-deployment testing
 
-### Current Versions
+## 🎨 Features
 
-#### Production Versions
-| Version | File | Release Notes |
-| ------- | ---- | ------------- |
-| v1.0.4  | [PayGovPosInstall-1.0.4.msi](installers-Prod/PayGovPosInstall-1.0.4.msi) | • Implemented retry logic for API calls to improve reliability<br>• Added automatic relogin to EMV device during payment processing |
-| v1.0.3  | [PayGovPosInstall-1.0.3.msi](installers-Prod/PayGovPosInstall-1.0.3.msi) | • Make First and Last name not required |
-| v1.0.2  | [PayGovPosInstall-1.0.2.msi](installers-Prod/PayGovPosInstall-1.0.2.msi) | • Updated the MerchantE SDK dll. It increases the timeout to 2 minutes when talking to the terminal |
-| v1.0.1.1| [PayGovPosInstall-1.0.1.1.msi](installers-Prod/PayGovPosInstall-1.0.1.1.msi) | • Update terminal timeout to 2 minutes |
-| v1.0.1  | [PayGovPosInstall-1.0.1.msi](installers-Prod/PayGovPosInstall-1.0.1.msi) | • Added feature to copy order id |
-| v1.0.0  | [PayGovPosInstall-1.0.0.msi](installers-Prod/PayGovPosInstall-1.0.0.msi) | • First Version on install |
+- **Modern Bootstrap 5 Design**: Professional, responsive layout
+- **Mobile-Friendly**: Optimized for all device sizes
+- **Version History**: Easy access to current and previous releases
+- **Release Notes**: Detailed changelog for each version
+- **Automatic Version Checking**: Latest version includes notification system for outdated installations
 
-#### Test Versions
-Test versions are available in the `Installers-Debug/` folder with the same version numbers and features as production, but with `-Test` suffix in the filename.
+## 🔗 Custom Domain
 
-## Custom Domain
+The site is accessible at: `posinstaller.paygov.us`
 
-The custom domain for the GitHub Pages site is specified in the `CNAME` file: `posinstaller.paygov.us`.
+---
 
-## Features
-
-- **Modern UI**: Clean, professional design with Google Fonts (Roboto)
-- **Responsive Layout**: Optimized for both desktop and mobile viewing
-- **Card-based Design**: Content presented in a centered container with subtle shadows
-- **Consistent Formatting**: All release notes use bulleted lists for easy reading
-- **Hover Effects**: Interactive table rows with smooth transitions
-- **Accessible Design**: High contrast colors and readable typography
-
-## How to Use
+© 2025 PayGov. All rights reserved.
 
 1. Visit the website at `posinstaller.paygov.us` or open the [index.html](index.html) file in a web browser.
 2. Choose between Production or Test versions.
